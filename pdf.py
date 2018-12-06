@@ -278,6 +278,25 @@ def reportPDFView(request):
 		m = re.search('^webmapsched\_[0-9\.]+\_(.+)', request.session['scanfile'])
 		scantitle = m.group(1).replace('.xml','').replace('_',' ')
 
+	scantype = ''
+	if '@type' in o['scaninfo']:
+		scantype = o['scaninfo']['@type']
+
+	if type(o['scaninfo']) is list:
+		for sinfo in o['scaninfo']:
+			scantype += sinfo['@type']+', '
+		scantype = scantype[0:-2]
+
+	protocol = ''
+	if '@protocol' in o['scaninfo']:
+		protocol = o['scaninfo']['@protocol']
+
+	if type(o['scaninfo']) is list:
+		for sinfo in o['scaninfo']:
+			protocol += sinfo['@protocol']+', '
+		protocol = protocol[0:-2]
+
+
 	r['html'] += '<script type="text/javascript" src="https://www.google.com/jsapi?autoload={%27modules%27:[{%27name%27:%27visualization%27,%27version%27:%271.1%27,%27packages%27:[%27corechart%27,%27sankey%27,%27annotationchart%27]}]}"></script>'+\
 	'<div class="container"><div style="text-align:center;width:100%;">'+\
 	'	<img src="/static/logoblack.png" style="height:60px;" />'+\
@@ -290,7 +309,7 @@ def reportPDFView(request):
 	'	<tbody>'+\
 	'		<tr><td><b>Arguments:</b></td><td>'+html.escape(o['@args'])+'</td></tr>'+\
 	'		<tr><td><b>Scan started at:</b></td><td>'+html.escape(o['@startstr'])+'</td></tr>'+\
-	'		<tr><td><b>Scan type:</b></td><td>'+html.escape(o['scaninfo']['@type'])+'</td></tr>'+\
+	'		<tr><td><b>Scan type:</b></td><td>'+html.escape(scantype)+'</td></tr>'+\
 	'		<tr><td><b>Nmap version:</b></td><td>'+html.escape(o['@version'])+'</td></tr>'+\
 	'	</tbody></table></div>'+\
 	'	<div style="color:#999;margin-top:100px;font-size:18px;"><i>The information contained in these documents is confidential, privileged and only for the information of the intended recipient and may not be used, published or redistributed.</i></div>'+\
