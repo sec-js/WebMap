@@ -629,12 +629,30 @@ def index(request, filterservice="", filterportid=""):
 		'	<b class="orange-text">Filtered Ports:</b> '+str(ports['filtered'])+'</div>'
 		scaninfobox3 = '<div id="detailstopports"></div>'
 
+	scantype = ''
+	if '@type' in o['scaninfo']:
+		scantype = o['scaninfo']['@type']
+
+	if type(o['scaninfo']) is list:
+		for sinfo in o['scaninfo']:
+			scantype += sinfo['@type']+', '
+		scantype = scantype[0:-2]
+
+	protocol = ''
+	if '@protocol' in o['scaninfo']:
+		protocol = o['scaninfo']['@protocol']
+
+	if type(o['scaninfo']) is list:
+		for sinfo in o['scaninfo']:
+			protocol += sinfo['@protocol']+', '
+		protocol = protocol[0:-2]
+
 	r['stats'] = {
 		'scaninfobox2': scaninfobox2,
 		'scaninfobox3': scaninfobox3,
 		'startstr': o['@startstr'],
-		'scantype': o['scaninfo']['@type'],
-		'protocol': o['scaninfo']['@protocol'],
+		'scantype': scantype,
+		'protocol': protocol,
 		'nmapver': o['@version'],
 		'nmapargs': o['@args'],
 		'xmlver': o['@xmloutputversion'],
