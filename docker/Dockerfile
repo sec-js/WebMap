@@ -1,12 +1,12 @@
 # WebMap
 # -
-# https://github.com/Rev3rseSecurity/WebMap
+# https://github.com/Hamza-Megahed/WebMap
 # Rev3rse Security: https://www.youtube.com/rev3rsesecurity
 # Author: theMiddle
 # -
 # Usage:
 #   $ cd /opt
-#   $ git clone https://github.com/Rev3rseSecurity/WebMap.git
+#   $ git clone https://github.com/Hamza-Megahed/WebMap.git
 #   $ cd WebMap/docker
 #   $ docker build -t webmap:latest .
 #   $ docker run -d -v /opt/WebMap/docker/xml:/opt/xml -p 8000:8000 webmap:latest
@@ -30,12 +30,12 @@ RUN mkdir /opt/xml && mkdir /opt/notes && \
 
 RUN pip3 install Django requests xmltodict && \
     cd /opt/ && django-admin startproject nmapdashboard && cd /opt/nmapdashboard && \
-    git clone https://github.com/Rev3rseSecurity/WebMap.git nmapreport && \
+    git clone https://github.com/Hamza-Megahed/WebMap.git nmapreport && \
     cd nmapreport && git checkout v2.3/master
 
 COPY settings.py /opt/nmapdashboard/nmapdashboard/
 COPY urls.py /opt/nmapdashboard/nmapdashboard/
-COPY vimrc /root/.vimrc
+# COPY vimrc /root/.vimrc
 COPY tzdata.sh /root/tzdata.sh
 COPY startup.sh /startup.sh
 
