@@ -71,14 +71,10 @@ but if you need it you can find all building steps inside the [Dockerfile](https
 ## Video
 The HTML template changes often. This video could not be up to date with the latest version.
 
-Version v2.3:<br>
-coming soon...<br>
 <br>
 HackerSploit Video about WebMap v2.2:<br>
 [![HackerSploit](https://img.youtube.com/vi/SoEIDNnOCGY/0.jpg)](https://www.youtube.com/watch?v=SoEIDNnOCGY)
 <br>
-Official Video of v2.1:<br>
-[![WebMap v2.1](https://img.youtube.com/vi/TujtG1Ki0TQ/0.jpg)](https://www.youtube.com/watch?v=TujtG1Ki0TQ)
 
 
 ## Features
