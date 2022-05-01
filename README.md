@@ -29,7 +29,7 @@ $ cd /opt
 $ git clone https://github.com/Hamza-Megahed/WebMap.git
 $ cd WebMap/docker
 $ docker build -t webmap:latest .
-$ docker run -d -v /opt/WebMap/docker/xml:/opt/xml -p 8000:8000 webmap:latest
+$ docker run -d --name webmap -v /opt/WebMap/docker/xml:/opt/xml -p 8000:8000 webmap:latest
 
 # now you can run Nmap and save the XML Report on /opt/WebMap/docker/xml
 $ nmap -sT -A -T4 -oX /opt/WebMap/docker/xml/myscan.xml 192.168.1.0/24
