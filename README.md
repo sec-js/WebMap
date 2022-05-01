@@ -25,17 +25,16 @@ A Web Dashbord for Nmap XML Report
 ## Usage
 You should use this with docker, just by sending this command:
 ```bash
-$ mkdir /tmp/webmap
-$ docker run -d \
-         --name webmap \
-         -h webmap \
-         -p 8000:8000 \
-         -v /tmp/webmap:/opt/xml \
-         rev3rse/webmap
+$ cd /opt
+$ git clone https://github.com/Hamza-Megahed/WebMap.git
+$ cd WebMap/docker
+$ docker build -t webmap:latest .
+$ docker run -d -v /opt/WebMap/docker/xml:/opt/xml -p 8000:8000 webmap:latest
 
-$ # now you can run Nmap and save the XML Report on /tmp/webmap
-$ nmap -sT -A -T4 -oX /tmp/webmap/myscan.xml 192.168.1.0/24
+# now you can run Nmap and save the XML Report on /opt/WebMap/docker/xml
+$ nmap -sT -A -T4 -oX /opt/WebMap/docker/xml/myscan.xml 192.168.1.0/24
 ```
+
 Now point your browser to http://localhost:8000
 
 ### Generate new token
